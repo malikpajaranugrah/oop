@@ -16,16 +16,21 @@ public class StringManipulation {
         }
         System.out.println(" ");
 
-        for (int i = 0; i < length; i++) {
-            for (int j = 0; j < length; j++) {
-                if (i == j || i + j == length - 1) {
-                    System.out.print(kata.charAt(i) + " ");
+        int lebar = panjang;
+
+        for (int i = 0; i < lebar; i++) {
+            for (int j = 0; j < lebar; j++) {
+                if (i == lebar / 2 && j >= (lebar - panjang) / 2 && j < (lebar + panjang) / 2) {
+                    System.out.print(nama.charAt(j - (lebar - panjang) / 2) + " ");
+                } else if (j == lebar / 2 && i >= (lebar - panjang) / 2 && i < (lebar + panjang) / 2) {
+                    System.out.print(nama.charAt(i - (lebar - panjang) / 2) + " ");
                 } else {
                     System.out.print("* ");
                 }
             }
             System.out.println();
         }
+
     }
     
 }
