@@ -10,7 +10,7 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String author;
     private  String isbn;
     private String category;
     private String title;
@@ -25,12 +25,12 @@ public class Book {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAuthor(String name) {
+        this.author = name;
     }
 
     public String getIsbn() {
