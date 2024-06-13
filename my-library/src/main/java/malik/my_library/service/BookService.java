@@ -1,12 +1,11 @@
-package malik.my_library.service;
+package com.example.library.service;
 
-import malik.my_library.model.Book;
-import malik.my_library.repository.BookRepository;
+import com.example.library.entity.Book;
+import com.example.library.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BookService {
@@ -18,8 +17,8 @@ public class BookService {
         return bookRepository.findAll();
     }
 
-    public Optional<Book> getBookById(Long id) {
-        return bookRepository.findById(id);
+    public Book getBookById(Long id) {
+        return bookRepository.findById(id).orElse(null);
     }
 
     public Book saveBook(Book book) {
