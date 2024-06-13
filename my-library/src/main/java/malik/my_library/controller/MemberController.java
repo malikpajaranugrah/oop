@@ -1,15 +1,16 @@
-package malik.my_library.controller;
+package com.example.library.controller;
 
-import malik.my_library.model.Member;
-import malik.my_library.service.MemberService;
+import com.example.library.entity.Member;
+import com.example.library.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/members")
+@RequestMapping("/members")
 public class MemberController {
 
     @Autowired
@@ -21,33 +22,28 @@ public class MemberController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Member> getMemberById(@PathVariable Long id_member) {
-        return memberService.getMemberById(id_member);
-    }
-
-    @PostMapping
-    public Member createMember(@RequestBody Member member) {
-        return memberService.saveMember(member);
+    public Member getMemberById(@PathVariable Long id) {
+        return memberService.getMemberById(id);
     }
 
     @PutMapping("/{id}")
-    public Member updateMember(@PathVariable Long id_member, @RequestBody Member memberDetails) {
-        Optional<Member> memberOptional = memberService.getMemberById(id_member);
-        if (memberOptional.isPresent()) {
-            Member member = memberOptional.get();
-            member.setName(memberDetails.getName());
-            member.setEmail(memberDetails.getEmail());
-            member.setIdnumber(memberDetails.getIdnumber());
-            member.setAddress(memberDetails.getAddress());
-            member.setPhone(memberDetails.getPhone());
-            return memberService.saveMember(member);
-        } else {
-            throw new RuntimeException("Member not found with id " + id_member);
-        }
+    public Member updateMember(@PathVariable Long id, @RequestBody Member member) {
+        member.setId(id);
+        return memberService.saveMember(member);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteMember(@PathVariable Long id_member) {
-        memberService.deleteMember(id_member);
+    public void deleteMember(@PathVariable Long id) {
+        memberService.deleteMember(id);
+    }
+
+    @PostMapping
+    public ResponseEntity<?> registerMember(@RequestBody Member member) {
+        try {
+            Member registeredMember = memberService.registerMember(member);
+            return ResponseEntity.ok(registeredMember);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 }
