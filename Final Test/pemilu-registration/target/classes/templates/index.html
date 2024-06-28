@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Halaman Utama</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <!-- Check if there's a flash message -->
+    <div th:if="${message}" class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+        <strong>Success!</strong> <span th:text="${message}"></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <h1 class="mt-5">Selamat Datang di Pendaftaran Badan AdHoc Desa Cisitu</h1>
+    <div class="list-group mt-3">
+        <a href="/kpps-registration" class="list-group-item list-group-item-action">Pendaftaran KPPS</a>
+        <a href="/pantarlih-registration" class="list-group-item list-group-item-action">Pendaftaran Pantarlih</a>
+        <a href="/announcements" class="list-group-item list-group-item-action">Pengumuman</a>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
