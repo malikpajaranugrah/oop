@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Closed</title>
+    <style>
+        body {
+            background: rgb(36,0,0);
+            background: linear-gradient(90deg, rgba(36,0,0,1) 0%, rgba(150,16,16,1) 50%, rgba(102,9,9,1) 100%);
+        }
+
+        .big-box {
+            width: 80%;
+            height: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .big-box img {
+            max-width: 70%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .big-box h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .big-box p {
+            font-size: 16px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+<div class="big-box">
+    <img src="/images/wrn.jpg" alt="KPPS Image">
+    <h1>Tidak Dapat Melakukan Pendaftaran</h1>
+    <p th:text="${message}"></p>
+</div>
+</body>
+</html>

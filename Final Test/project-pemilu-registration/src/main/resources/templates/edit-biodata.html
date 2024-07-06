@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Biodata</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Edit Biodata</h1>
+    <form onsubmit="event.preventDefault(); $('#popupModal').modal('show');" method="post">
+        <div class="form-group">
+            <label for="nik">NIK</label>
+            <input type="text" class="form-control" id="nik" name="nik" th:value="${biodata.nik}" required>
+        </div>
+        <div class="form-group">
+            <label for="nama">Nama</label>
+            <input type="text" class="form-control" id="nama" name="nama" th:value="${biodata.nama}" required>
+        </div>
+        <div class="form-group">
+            <label for="tempatLahir">Tempat Lahir</label>
+            <input type="text" class="form-control" id="tempatLahir" name="tempatLahir" th:value="${biodata.tempatLahir}" required>
+        </div>
+        <div class="form-group">
+            <label for="tanggalLahir">Tanggal Lahir</label>
+            <input type="date" class="form-control" id="tanggalLahir" name="tanggalLahir" th:value="${#dates.format(biodata.tanggalLahir, 'yyyy-MM-dd')}" required>
+        </div>
+        <div class="form-group">
+            <label for="alamat">Alamat</label>
+            <input type="text" class="form-control" id="alamat" name="alamat" th:value="${biodata.alamat}" required>
+        </div>
+        <div class="form-group">
+            <label for="rtRw">RT/RW</label>
+            <input type="text" class="form-control" id="rtRw" name="rtRw" th:value="${biodata.rtRw}" required>
+        </div>
+        <div class="form-group">
+            <label for="desaKelurahan">Desa/Kelurahan</label>
+            <input type="text" class="form-control" id="desaKelurahan" name="desaKelurahan" th:value="${biodata.desaKelurahan}" required>
+        </div>
+        <div class="form-group">
+            <label for="kecamatan">Kecamatan</label>
+            <input type="text" class="form-control" id="kecamatan" name="kecamatan" th:value="${biodata.kecamatan}" required>
+        </div>
+        <div class="form-group">
+            <label for="kabupatenKota">Kabupaten/Kota</label>
+            <input type="text" class="form-control" id="kabupatenKota" name="kabupatenKota" th:value="${biodata.kabupatenKota}" required>
+        </div>
+        <div class="form-group">
+            <label for="nomorTelepon">Nomor Telepon</label>
+            <input type="text" class="form-control" id="nomorTelepon" name="nomorTelepon" th:value="${biodata.nomorTelepon}" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" th:value="${biodata.email}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Konfirmasi Data</button>
+    </form>
+</div>
+
+<div id="popupModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="popupModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="popupModalLabel">Konfirmasi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <img class="lock-icon" src="/images/lock.jpg" alt="Lock Icon" style="max-width: 85px; max-height: 85px;">
+                </div>
+                <div class="text-center">
+                    <p>Pendaftaran telah Dikunci. Terima kasih sudah mendaftar.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="redirectToHome()">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    function redirectToHome() {
+        window.location.href = '/';
+    }
+</script>
+
+</body>
+</html>
